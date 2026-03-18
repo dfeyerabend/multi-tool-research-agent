@@ -114,8 +114,11 @@ def supervisor_agent_run(user_query: str) -> str:
             tool_results = []                                   # collect results from all parallel tool calls
             for block in response.content:
                 if block.type == "tool_use":
-                    print("Calling Router Agent")
-                    print(f"  Task: {json.dumps(block.input, ensure_ascii=False)[:200]}")
+                    # Flag to call Router Agent
+                    print(f"\n{'─' * 50}")
+                    print(f"⮕  SUPERVISOR → ROUTER AGENT")
+                    print(f"   Task: {json.dumps(block.input, ensure_ascii=False)[:200]}")
+                    print(f"{'─' * 50}")
 
                     # Extract task and optional context from the tool call
                     task = block.input.get("task", "")          # get the task description the Supervisor wrote

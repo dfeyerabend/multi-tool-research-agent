@@ -25,7 +25,11 @@ def research_agent_run(task: str) -> str:
         The research result as a string
     """
 
-    print(f"\n  [Research Agent] Task: {task}")
+    # Banner
+    print(f"\n    ┌── RESEARCH AGENT ──────────────────────┐")
+    print(f"    │ Task: {task[:60]}")
+    print(f"    └─────────────────────────────────────────┘")
+
     messages = [{"role": "user", "content": task}]
 
     for iteration in range(MAX_ITERATIONS_SUBAGENTS):

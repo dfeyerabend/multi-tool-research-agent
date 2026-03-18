@@ -82,8 +82,15 @@ def router_agent_run(router_task: str, router_context: str = "") -> str:
             tool_results = []
             for block in response.content:
                 if block.type == "tool_use":
+
                     agent_task = block.input.get("task", "")
                     agent_context = block.input.get("context", "")
+
+                    # Call Subagent Banner
+                    print(f"\n  {'─' * 46}")
+                    print(f"  ⮕  ROUTER → {block.name.replace('call_', '').replace('_', ' ').upper()}")
+                    print(f"     Task: {agent_task[:150]}")
+                    print(f"  {'─' * 46}")
 
                     if block.name == "call_research_agent":
                         try:
