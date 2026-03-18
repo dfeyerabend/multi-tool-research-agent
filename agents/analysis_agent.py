@@ -60,6 +60,7 @@ def analysis_agent_run(task: str) -> str:
                             "error": str(e),
                             "failed_tool": block.name,
                         })
+                    print(f"    Tool Result: {result[:300]}")
 
                     tool_results.append({
                         "type": "tool_result",
